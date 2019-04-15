@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "publish": "cd .. && git subtree push --prefix server heroku-server master || true"
+    "deploy": "cd ../ && git subtree push --prefix server heroku-server master || true"
   },
   "author": "",
   "license": "ISC",
