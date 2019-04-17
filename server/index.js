@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("./services/passport");
+require("./models/user");
 const keys = require("./config/keys");
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
