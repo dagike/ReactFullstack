@@ -1,7 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { fetchUser } from "../actions";
 
 class Header extends Component {
+  renderContent = () => {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return (
+          <li>
+            <a href="/auth/google/">Login With Google</a>
+          </li>
+        );
+      default:
+        return (
+          <li>
+            <a href="/api/logout/">Logout</a>
+          </li>
+        );
+    }
+  };
+
   render() {
     return (
       <nav>
@@ -9,15 +31,14 @@ class Header extends Component {
           <Link to="/" className="left brand-logo">
             Survey
           </Link>
-          <ul className="right">
-            <li>
-              <Link to="/auth/google/">Login With Google</Link>
-            </li>
-          </ul>
+          <ul className="right">{this.renderContent()}</ul>
         </div>
       </nav>
     );
   }
 }
 
-export default Header;
+export default connect(
+  ({ auth }) => ({ auth: auth }),
+  { fetchUser }
+)(Header);
