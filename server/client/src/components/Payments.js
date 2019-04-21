@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { connect } from "react-redux";
+import { handleToken } from "../actions";
 
 class Payments extends Component {
-  handleToken = token => {
-    console.log(token);
-  };
   render() {
     return (
       <StripeCheckout
         amount={700}
         currency="CAD"
-        token={this.handleToken}
+        token={token => this.props.handleToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
         name="Survey"
         description="$7 for 5 survey credits"
@@ -21,4 +20,7 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default connect(
+  state => ({}),
+  { handleToken }
+)(Payments);
