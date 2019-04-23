@@ -5,9 +5,8 @@ import { fetchUser } from "../actions";
 
 import Header from "./Header";
 import Landing from "./Landing";
-
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurverNew = () => <h2>SurveyNew</h2>;
+import Dashboard from "./Dashboard";
+import SurveyCreate from "./surveys/SurveyCreate";
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +19,7 @@ class App extends Component {
           <div>
             <Header />
             <Route path="/surveys" exact component={Dashboard} />
-            <Route path="/surveys/new" exact component={SurverNew} />
+            <Route path="/surveys/new" exact component={SurveyCreate} />
             <Route path="/" exact component={Landing} />
           </div>
         </BrowserRouter>
